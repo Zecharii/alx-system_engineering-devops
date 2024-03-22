@@ -11,5 +11,5 @@ This project was done as part of the **Full Stack Software Engineering** program
 | Filename | Description |
 | -------- | ----------- |
 | `0-create_a_file.pp` | Create a file in `/tmp` |
-| `1-install_a_package.pp` | Install `puppet-lint` |
+| `1-install_a_package.pp` | Install `python3-flask` |
 | `2-execute_a_command.pp` | Create a manifest that kills a process named `killmenow` |
