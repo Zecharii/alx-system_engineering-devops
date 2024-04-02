@@ -1,0 +1,6 @@
+# This is the ssh client system-wide config file.
+# The file provides defaults for users.
+
+Host *
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
