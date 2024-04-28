@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# A script that installs and configures nginx
+
+echo -e "Updating and installing Nginx.\n"
+apt-get update -y -qq && \ apt-get install nginx -y
+
+echo -e "\nSetting up some minor stuff.\n"
+
+# starting nginx service
+service nginx start
+
+# allowing nginx on firewall
+ufw allow 'Nginx HTTP'
+
+# Give the user ownership to website files for easy editing
+chown -R "$USER":"$USER" /var/www/html
+chmod -R 755 /var/www
+
+# Backup default index
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
+
+# Creating new index
+echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
+
+# Restarting nginx
+service nginx restart
+
+echo -e "\nCompleted. ✅\n"
