@@ -31,3 +31,65 @@ This project was done as part of the requirements for the **Software Engineering
 - [Logs files on Linux](https://www.cyberciti.biz/faq/ubuntu-linux-gnome-system-log-viewer/)
 - [RFC 7231 (HTTP/1.1)](https://datatracker.ietf.org/doc/html/rfc7231)
 - [RFC 7540 (HTTP/2)](https://datatracker.ietf.org/doc/html/rfc7540)
+
+## Tasks
+* Task 0
+- ssh into web-01
+```ssh ubuntu@34.232.68.92`
+```
+- create a file (say "client_to_server") and add below code
+```
+#!/usr/bin/env bash
+# Transfers a file from a client to a server
+if [ "$#" -lt 3 ]
+then
+    echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+elif [ "$#" -eq 3 ]
+then
+    scp -o StrictHostKeyChecking=no "$1" "$3@$2:~/"
+else
+    scp -o StrictHostKeyChecking=no -i "$4" "$1" "$3@$2:~/"
+fi
+```
+- make the file executable
+```
+chmod u+x client_to_server
+```
+- run your file as a superuser
+```
+sudo ./client_to_server
+```
+- you should get this response
+`Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY`
+- test your work
+
+* Task 1
+- ssh into web-01
+```ssh ubuntu@34.232.68.92`
+```
+- create a file (say "install_nginx") and add below code
+```
+#!/usr/bin/env bash
+# Script that installs Nginx server
+apt-get -y update
+apt-get -y install nginx
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+service nginx start
+```
+- make the file executable
+```
+chmod u+x install_nginx
+```
+- run your file as a superuser
+```
+sudo ./install_nginx
+```
+- test your work
+* on server terminal, use
+```
+curl localhost
+```
+* on local terminal, use
+```
+curl -sI 34.232.68.92
+```
