@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# # Script that installs Nginx server and redirects /redirect_me
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+sudo ufw allow 'Nginx HTTP'
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+
+sudo sed -i '24i\       rewrite ^/redirect_me https://www.youtube.com/watch?v=Q7Phkq0BUXM permanent;' /etc/nginx/sites-available/default
+
+sudo service nginx restart
