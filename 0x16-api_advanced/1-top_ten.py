@@ -6,6 +6,7 @@ the top ten hot posts of a subreddit
 import requests
 import sys
 
+
 def top_ten(subreddit):
     '''
         returns the top ten posts for a given subreddit
