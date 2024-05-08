@@ -18,7 +18,7 @@ Learning how to:
 
 ## Files
 
-All the following files are scripts of MySQL:
+All the files used:
 
 | Filename | Description | Category |
 | -------- | ----------- | -------- |
